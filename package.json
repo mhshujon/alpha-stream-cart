@@ -1,0 +1,43 @@
+{
+  "name": "alpha-stream-cart",
+  "version": "1.0.0",
+  "description": "Transform your WooCommerce store with live-streaming and real-time shopping! StreamCart lets you broadcast directly to Facebook Live, showcase products, and enable viewers to add items to their carts during your live stream—boosting engagement and sales seamlessly.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "wp-env": "wp-env",
+    "wp-env:start": "wp-env start",
+    "wp-env:stop": "wp-env stop",
+    "postenv:start": "./tests/bin/initialize.sh",
+    "phpunit": "npm run composer phpunit",
+    "composer": "wp-env run phpunit composer --working-dir=/var/www/html/wp-content/plugins/alpha-stream-cart",
+    "prepare": "husky install",
+    "preinstall": "composer install",
+    "test:coverage": "wp-env run tests-wordpress /var/www/html/wp-content/plugins/alpha-stream-cart/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/alpha-stream-cart/phpunit.xml.dist --verbose --coverage-html /var/www/html/wp-content/plugins/alpha-stream-cart/code_coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:mhshujon/alpha-stream-cart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "git@github.com:mhshujon/alpha-stream-cart/issues"
+  },
+  "homepage": "git@github.com:mhshujon/alpha-stream-cart#readme",
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-compress": "^1.6.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-release": "^0.14.0",
+    "grunt-run": "^0.8.1"
+  },
+  "lint-staged": {
+    "*.php": [
+      "./vendor/bin/phpcs"
+    ]
+  }
+}

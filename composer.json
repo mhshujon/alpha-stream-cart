@@ -1,0 +1,19 @@
+{
+  "name": "alhpa/stream-cart",
+  "description": "Transform your WooCommerce store with live-streaming and real-time shopping! StreamCart lets you broadcast directly to Facebook Live, showcase products, and enable viewers to add items to their carts during your live stream—boosting engagement and sales seamlessly.",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "mhshujon",
+      "email": "mhshujon@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Alpha\\StreamCart\\": "includes/"
+    }
+  },
+  "require": {
+  }
+}

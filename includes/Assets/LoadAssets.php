@@ -106,6 +106,6 @@ class LoadAssets {
 		}
 
 		wp_enqueue_style( 'alpha-stream-cart-css' );
-		wp_enqueue_script( 'alpha-stream-cart-app' );
+//		wp_enqueue_script( 'alpha-stream-cart-app' );
 	}
 }

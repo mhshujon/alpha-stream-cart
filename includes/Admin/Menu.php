@@ -26,10 +26,9 @@ class Menu {
 		$menu_position = 50;
 		$capability    = 'manage_options';
 
-		add_menu_page( esc_attr__( 'StreamCart', 'alpha-stream-cart' ), esc_attr__( 'StreamCart', 'alpha-stream-cart' ), $capability, $slug, [ $this, 'plugin_page' ], '', $menu_position );
 
 		if ( current_user_can( $capability ) ) {
-			$submenu[ $slug ][] = [ esc_attr__( 'Streams', 'alpha-stream-cart' ), $capability, 'admin.php?page=' . $slug . '#/' ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			add_menu_page( esc_attr__( 'StreamCart', 'alpha-stream-cart' ), esc_attr__( 'StreamCart', 'alpha-stream-cart' ), $capability, $slug, [ $this, 'plugin_page' ], '', $menu_position );
 		}
 	}
 
@@ -42,6 +41,6 @@ class Menu {
 	 * @return void
 	 */
 	public function plugin_page() {
-		require_once ALPHA_STREAM_CART_TEMPLATE_PATH . '/app.php';
+		require_once ALPHA_STREAM_CART_TEMPLATE_PATH . '/admin/dashboard.php';
 	}
 }

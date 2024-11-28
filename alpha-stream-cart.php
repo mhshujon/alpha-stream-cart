@@ -122,7 +122,7 @@ final class StreamCart {
 		define( 'ALPHA_STREAM_CART_DIR', __DIR__ );
 		define( 'ALPHA_STREAM_CART_PATH', dirname( ALPHA_STREAM_CART_FILE ) );
 		define( 'ALPHA_STREAM_CART_INCLUDES', ALPHA_STREAM_CART_PATH . '/includes' );
-		define( 'ALPHA_STREAM_CART_TEMPLATE_PATH', ALPHA_STREAM_CART_PATH . '/views' );
+		define( 'ALPHA_STREAM_CART_TEMPLATE_PATH', ALPHA_STREAM_CART_PATH . '/templates' );
 		define( 'ALPHA_STREAM_CART_URL', plugins_url( '', ALPHA_STREAM_CART_FILE ) );
 		define( 'ALPHA_STREAM_CART_BUILD', ALPHA_STREAM_CART_URL . '/build' );
 		define( 'ALPHA_STREAM_CART_ASSETS', ALPHA_STREAM_CART_URL . '/assets' );

@@ -15,6 +15,7 @@ $auth_btn_text    = $is_authorized ? __( 'CONNECTED', 'alpha-stream-cart' ) : __
             <?php echo $auth_btn_text;?>
         </a>
         <?php endif;?>
+        <span class="accordion-icon"><?php echo ALPHA_STREAM_CART_ARROW_ICON;?></span> <!-- Right-pointing arrow (▶) -->
 	</div>
 	<div class="accordion-content">
 		<table class="form-table">

@@ -52,12 +52,30 @@ body.toplevel_page_alpha-stream-cart {
     }
 
     .accordion-header {
+        display: flex; /* Enable flexbox */
+        justify-content: space-between; /* Space between elements (text and button) */
+        align-items: center; /* Align items vertically */
         background: #f7f7f7;
         padding: 1em 15px;
         cursor: pointer;
         font-size: 16px;
         font-weight: bold;
         color: #333;
+    }
+
+    /* Accordion Icon */
+    .accordion-icon {
+        display: inline-block;
+        margin-left: auto; /* Push icon to the right */
+        transition: transform 0.3s ease-in-out; /* Smooth rotation */
+        font-size: 18px; /* Adjust size as needed */
+        color: dimgray;
+        transform: rotate(90deg);
+    }
+
+    /* Rotate the icon when the accordion is open */
+    .accordion-item.open .accordion-icon {
+        transform: rotate(-90deg); /* Rotate the icon to point up when expanded */
     }
 
     .accordion-content {
@@ -90,7 +108,6 @@ body.toplevel_page_alpha-stream-cart {
 
     /* Connect Button Styling */
     .connect-btn {
-        display: inline-block; /* Makes transform work */
         background-color: #28a745; /* Green */
         color: #fff;
         font-size: 14px;

@@ -1,19 +1,4 @@
 jQuery(document).ready(function($) {
-    let currentPage = 1;
-    let searchTimeout;
-
-    // Tab navigation
-    $('.streamcart-tabs .nav-tab').on('click', function(e) {
-        e.preventDefault();
-        const target = $(this).attr('href').substring(1);
-        
-        $('.nav-tab').removeClass('nav-tab-active');
-        $(this).addClass('nav-tab-active');
-        
-        $('.tab-pane').removeClass('active');
-        $(`#${target}`).addClass('active');
-    });
-
     // Stream controls
     $('#start-stream').on('click', function() {
         $(this).prop('disabled', true);
@@ -52,37 +37,6 @@ jQuery(document).ready(function($) {
         });
     });
 
-    // Product search and pagination
-    $('#product-search').on('input', function() {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(function() {
-            currentPage = 1;
-            loadProducts();
-        }, 500);
-    });
-
-    $(document).on('click', '.pagination-link', function(e) {
-        e.preventDefault();
-        currentPage = $(this).data('page');
-        loadProducts();
-    });
-
-    // Product list
-    function loadProducts() {
-        const search = $('#product-search').val();
-        
-        $.get(ajaxurl, {
-            action: 'streamcart_get_products',
-            search: search,
-            page: currentPage
-        }).done(function(response) {
-            if (response.success) {
-                renderProducts(response.data.products);
-                renderPagination(response.data.total_pages);
-            }
-        });
-    }
-
     function renderProducts(products) {
         const container = $('#product-list');
         container.empty();
@@ -103,20 +57,6 @@ jQuery(document).ready(function($) {
                 </div>
             `);
         });
-    }
-
-    function renderPagination(totalPages) {
-        const pagination = $('#product-pagination');
-        pagination.empty();
-
-        if (totalPages <= 1) return;
-
-        for (let i = 1; i <= totalPages; i++) {
-            pagination.append(`
-                <a href="#" class="pagination-link ${i === currentPage ? 'current' : ''}" 
-                   data-page="${i}">${i}</a>
-            `);
-        }
     }
 
     // Product stream management
@@ -156,45 +96,34 @@ jQuery(document).ready(function($) {
         });
     });
 
-    // Settings form
-    $('#streamcart-settings').on('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = $(this).serialize();
-        
-        $.post(ajaxurl, {
-            action: 'streamcart_save_credentials',
-            data: formData
-        }).done(function(response) {
-            if (response.success) {
-                showNotification('Settings saved successfully');
-            } else {
-                showNotification(response.data, 'error');
-            }
-        });
-    });
+    const handleAccordion = () => {
+        const $accordionItems = $('.accordion-item');
 
-    // Utilities
-    function formatPrice(price) {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(price);
-    }
+        $accordionItems.each(function () {
+            const $header = $(this).find('.accordion-header');
 
-    function showNotification(message, type = 'success') {
-        const notification = $('<div></div>')
-            .addClass(`notice notice-${type}`)
-            .text(message)
-            .insertBefore('.streamcart-tabs');
-            
-        setTimeout(function() {
-            notification.fadeOut(function() {
-                $(this).remove();
+            $header.on('click', function () {
+                // Check if the accordion is marked as "Pro"
+                if ($(this).parent().data('pro') === true) {
+                    alert('This is a premium feature. Upgrade to access it!');
+                    return; // Prevent expansion
+                }
+                // Close other accordion items
+                $accordionItems.not($(this).parent()).removeClass('open');
+                $accordionItems.not($(this).parent()).find('.accordion-content').css('max-height', '0');
+
+                // Toggle the clicked item
+                const $content = $(this).siblings('.accordion-content');
+                if ($(this).parent().hasClass('open')) {
+                    $(this).parent().removeClass('open');
+                    $content.css('max-height', '0');
+                } else {
+                    $(this).parent().addClass('open');
+                    $content.css('max-height', $content.prop('scrollHeight') + 'px');
+                }
             });
-        }, 3000);
+        });
     }
 
-    // Initialize
-    loadProducts();
+    handleAccordion();
 });

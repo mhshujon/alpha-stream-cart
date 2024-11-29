@@ -2,6 +2,13 @@
 
 namespace Alpha\StreamCart\Admin;
 
+/**
+ * Class Menu
+ *
+ * Handles the creation and rendering of the admin menu for the StreamCart plugin.
+ *
+ * @since 1.0.0
+ */
 class Menu {
 
 	/**
@@ -20,8 +27,6 @@ class Menu {
 	 * @since 1.0.0
 	 */
 	public function init_menu() {
-		global $submenu;
-
 		$slug          = ALPHA_STREAM_CART_SLUG;
 		$menu_position = 50;
 		$capability    = 'manage_options';

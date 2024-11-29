@@ -407,6 +407,19 @@ final class StreamCart {
 }
 
 /**
+ * Declare plugin's compatibility with WooCommerce HPOS
+ *
+ * @return void
+ * @since 1.0.0
+ */
+function alpha_sc_wc_hpos_compatibility() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__ );
+	}
+}
+add_action( 'before_woocommerce_init', 'alpha_sc_wc_hpos_compatibility' );
+
+/**
  * Initialize the main plugin.
  *
  * @return \StreamCart|bool

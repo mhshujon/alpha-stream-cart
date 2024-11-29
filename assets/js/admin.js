@@ -111,7 +111,9 @@ jQuery(document).ready(function($) {
             $header.on('click', function () {
                 // Check if the accordion is marked as "Pro"
                 if ($(this).parent().data('pro') === true) {
-                    alert('This is a premium feature. Upgrade to access it!');
+                    const $alphaStreamCart = $( '.toplevel_page_alpha-stream-cart' );
+                    $alphaStreamCart.find( '.premium-feat-modal-overlay' ).addClass( 'active' );
+                    $alphaStreamCart.find( '.premium-feat-modal' ).addClass( 'active' );
                     return; // Prevent expansion
                 }
                 // Close other accordion items
@@ -132,4 +134,9 @@ jQuery(document).ready(function($) {
     }
 
     handleAccordion();
+
+    $( '.alpha-stream-cart' ).find( '.premium-feat-modal-close' ).on( 'click', function() {
+        $( '.premium-feat-modal' ).removeClass( 'active' );
+        $( '.premium-feat-modal-overlay' ).removeClass( 'active' );
+    });
 });

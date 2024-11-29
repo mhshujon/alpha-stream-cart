@@ -101,6 +101,12 @@ jQuery(document).ready(function($) {
 
         $accordionItems.each(function () {
             const $header = $(this).find('.accordion-header');
+            const $connectBtn = $(this).find('.connect-btn');
+
+            // Prevent click on connect button from triggering accordion
+            $connectBtn.on('click', function (e) {
+                e.stopPropagation(); // Stops the click from affecting parent elements
+            });
 
             $header.on('click', function () {
                 // Check if the accordion is marked as "Pro"

@@ -48,6 +48,7 @@ final class StreamCart {
 	 */
 	private function __construct() {
 		require_once __DIR__ . '/vendor/autoload.php';
+		require_once __DIR__ . '/includes/alpha-stream-cart-global-functions.php';
 
 		$this->define_constants();
 

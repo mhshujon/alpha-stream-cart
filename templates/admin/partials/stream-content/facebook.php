@@ -1,7 +1,8 @@
 <!-- Accordion Item 1 -->
 <div class="accordion-item">
 	<div class="accordion-header">
-		<span><?php _e('Facebook Credentials', 'alpha-stream-cart'); ?></span>
+		<span><?php echo $channel[ 'title' ] . ' ' . __('Credentials', 'alpha-stream-cart'); ?></span>
+        <a href="https://google.com/" class="connect-btn not-connected"><?php _e('Connect', 'alpha-stream-cart'); ?></a>
 	</div>
 	<div class="accordion-content">
 		<table class="form-table">

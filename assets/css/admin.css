@@ -87,4 +87,36 @@ body.toplevel_page_alpha-stream-cart {
         text-transform: uppercase;
         font-weight: bold;
     }
+
+    /* Connect Button Styling */
+    .connect-btn {
+        display: inline-block; /* Makes transform work */
+        background-color: #28a745; /* Green */
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        margin-left: 10px;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background-color 0.4s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .connect-btn:hover {
+        background-color: #23913c;
+        transform: scale(1.12);
+    }
+
+    .not-connected {
+        background-color: #2271b1; /* Red */
+    }
+
+    /* Hover Effect for Active Button */
+    .not-connected:hover {
+        background-color: #1b65a1;
+        transform: scale(1.12);
+    }
 }

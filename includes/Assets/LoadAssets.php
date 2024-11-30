@@ -107,5 +107,26 @@ class LoadAssets {
 
 		wp_enqueue_style( 'alpha-stream-cart-css' );
 		wp_enqueue_script( 'alpha-stream-cart-app' );
+
+		$this->enqueue_localized_scripts();
+	}
+
+	/**
+	 * Enqueue localized scripts.
+	 *
+	 * Localizes the script with data for use in the JavaScript file.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function enqueue_localized_scripts() {
+		wp_localize_script(
+			'alpha-stream-cart-app',
+			'alphaStreamCartVars',
+			[
+				'ajaxNonce' => wp_create_nonce( 'alpha_stream_cart_nonce' )
+			]
+		);
 	}
 }

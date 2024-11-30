@@ -139,4 +139,20 @@ jQuery(document).ready(function($) {
         $( '.premium-feat-modal' ).removeClass( 'active' );
         $( '.premium-feat-modal-overlay' ).removeClass( 'active' );
     });
+
+    const saveStreamChannelCredentials = () => {
+        $.post(ajaxurl, {
+            action: 'alpha_sc_save_channels_credentials',
+            _alpha_stream_cart_nonce: alphaStreamCartVars.ajaxNonce,
+            form_data: $('form#alpha-stream-channel-settings').serialize()
+        }).done(function(response) {
+            console.log(response);
+            if (response.success) {
+                // showNotification('Channel credentials saved successfully');
+            } else {
+                // showNotification(response.data, 'error');
+            }
+        });
+    }
+    $( 'form#alpha-stream-channel-settings' ).on( 'submit', saveStreamChannelCredentials );
 });

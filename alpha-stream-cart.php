@@ -49,6 +49,7 @@ final class StreamCart {
 	private function __construct() {
 		require_once __DIR__ . '/vendor/autoload.php';
 		require_once __DIR__ . '/includes/alpha-stream-cart-global-functions.php';
+		require_once __DIR__ . '/includes/alpha-stream-cart-global-keys.php';
 
 		$this->define_constants();
 
@@ -131,7 +132,6 @@ final class StreamCart {
 		define( 'ALPHA_STREAM_CART_SL_STORE_URL', sanitize_url( 'https://rextheme.com/' ) );
 		define( 'ALPHA_STREAM_CART_ITEM_ID', '387936' );
 		define( 'ALPHA_STREAM_CART_INCLUDES_ASSETS', ALPHA_STREAM_CART_URL . '/includes/Assets' );
-		define( 'ALPHA_STREAM_CART_ARROW_ICON', '&#x25B6;' );
 	}
 
 	/**

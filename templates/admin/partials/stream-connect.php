@@ -3,7 +3,7 @@ $stream_channels = function_exists( 'alpha_sc_get_channels' ) ? alpha_sc_get_cha
 ?>
 
 <div id="alpha-stream-connect" class="tab-pane">
-    <form id="alpha-stream-connect-settings">
+    <form id="alpha-stream-channel-settings" method="post">
         <h2><?php _e('Stream Channels', 'alpha-stream-cart'); ?></h2>
 
         <!-- Accordion Container -->

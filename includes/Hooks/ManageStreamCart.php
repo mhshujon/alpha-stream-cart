@@ -19,6 +19,7 @@ class ManageStreamCart {
 	 */
 	public function __construct() {
 		add_action( 'admin_head', [ $this, 'render_premium_feature_modal' ] );
+		add_action( 'wp_ajax_alpha_sc_save_channels_credentials', [ $this, 'save_channels_credentials' ] );
 	}
 
 	/**
@@ -50,5 +51,32 @@ class ManageStreamCart {
 <!--            </div>-->
         </div>
 		<?php
+	}
+
+	/**
+	 * Handles the AJAX request to save channel credentials.
+	 *
+	 * This function verifies the nonce, parses the form data, and updates the
+	 * WordPress options with the provided credentials.
+	 *
+	 * @since 1.0.0
+	 */
+	public function save_channels_credentials() {
+		$nonce_verified = check_ajax_referer( 'alpha_stream_cart_nonce', '_alpha_stream_cart_nonce', false );
+		if ( ! $nonce_verified ) {
+			wp_send_json_error( [ 'message' => __( 'Request verification failed. Please try again.', 'alpha-stream-cart' ) ] );
+			wp_die();
+		}
+
+		wp_parse_str( filter_input( INPUT_POST, 'form_data' ), $form_data );
+
+		foreach ( $form_data as $key => $value ) {
+			if ( preg_match( '/^alpha_stream_cart_/', $key ) ) {
+				update_option( $key, htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' ) );
+			}
+		}
+
+		wp_send_json_success( [ 'message' => __( 'Credentials saved successfully.', 'alpha-stream-cart' ) ] );
+		wp_die();
 	}
 }

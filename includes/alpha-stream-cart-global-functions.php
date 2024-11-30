@@ -24,3 +24,16 @@ if ( !function_exists( 'alpha_sc_get_channels' ) ) {
 		];
 	}
 }
+
+if ( !function_exists( 'alpha_sc_get_redirect_url' ) ) {
+	/**
+	 * Retrieve the redirect URL.
+	 *
+	 * @return string The redirect URL.
+	 *
+	 * @since 1.0.0
+	 */
+	function alpha_sc_get_redirect_url(): string {
+		return esc_url( admin_url( 'admin.php?page=alpha-stream-cart&tab=stream-connect' ) );
+	}
+}

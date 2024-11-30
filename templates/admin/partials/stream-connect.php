@@ -1,10 +1,17 @@
 <?php
 $stream_channels = function_exists( 'alpha_sc_get_channels' ) ? alpha_sc_get_channels() : [];
+$redirect_url = function_exists( 'alpha_sc_get_redirect_url' ) ? alpha_sc_get_redirect_url() : '';
 ?>
 
 <div id="alpha-stream-connect" class="tab-pane">
     <form id="alpha-stream-channel-settings" method="post">
         <h2><?php _e('Stream Channels', 'alpha-stream-cart'); ?></h2>
+
+        <div class="alpha-stream-redirect-url-container">
+            <label for="alpha-stream-redirect-url">Redirect URL</label>
+            <input type="text" id="alpha-stream-redirect-url" name="redirect_url" value="<?php echo $redirect_url; ?>" readonly>
+            <span id="alpha-stream-copied-msg" class="hidden"><?php _e('Copied!', 'alpha-stream-cart'); ?></span>
+        </div>
 
         <!-- Accordion Container -->
         <div class="accordion">

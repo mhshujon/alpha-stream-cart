@@ -155,4 +155,14 @@ jQuery(document).ready(function($) {
         });
     }
     $( 'form#alpha-stream-channel-settings' ).on( 'submit', saveStreamChannelCredentials );
+
+    const copyRedirectUrl = () => {
+        // Select and copy the text in the input field
+        $('#alpha-stream-redirect-url').select();
+        document.execCommand('copy');
+
+        // Show the "Copied!" message
+        $('span#alpha-stream-copied-msg').show().delay(700).fadeOut(); // Fade in and out effect
+    }
+    $('#alpha-stream-redirect-url').on( 'click', copyRedirectUrl);
 });

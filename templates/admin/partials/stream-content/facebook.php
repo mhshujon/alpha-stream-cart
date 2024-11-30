@@ -1,6 +1,6 @@
 <?php
 $app_id           = get_option( ALPHA_STREAM_CART_FB_APP_ID );
-$app_secret       = get_option( ALPHA_STREAM_CART_FB_APP_ID );
+$app_secret       = get_option( ALPHA_STREAM_CART_FB_APP_SECRET );
 $ready_to_connect = ! empty( $app_id ) && ! empty( $app_secret );
 $is_authorized    = get_option( ALPHA_STREAM_CART_FB_ACCESS_TOKEN );
 $auth_btn_text    = $is_authorized ? __( 'CONNECTED', 'alpha-stream-cart' ) : __( 'CONNECT', 'alpha-stream-cart' );

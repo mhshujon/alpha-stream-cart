@@ -232,4 +232,44 @@ body.toplevel_page_alpha-stream-cart {
     .premium-feat-modal-overlay.active, .premium-feat-modal.active {
         display: block;
     }
+
+    .alpha-stream-redirect-url-container {
+        position: relative;
+        width: 100%;
+        margin: 20px 0; /* Spacing between fields */
+    }
+
+    .alpha-stream-redirect-url-container label {
+        position: absolute;
+        top: -8px;
+        left: 10px;
+        font-size: 14px;
+        color: #999;
+        background-color: white;
+        padding: 0 5px;
+    }
+
+    .alpha-stream-redirect-url-container input {
+        width: 100%;
+        padding: 6px 40px 6px 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: #f7f7f7;
+        color: #4b4b4b;
+        cursor: pointer;
+    }
+
+    #alpha-stream-copied-msg {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 12px;
+        cursor: pointer;
+        color: #0073aa;
+        transition: color 0.3s ease;
+    }
 }

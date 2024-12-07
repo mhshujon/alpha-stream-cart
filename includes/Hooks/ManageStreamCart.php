@@ -2,6 +2,8 @@
 
 namespace Alpha\StreamCart\Hooks;
 
+use Alpha\StreamCart\Admin\Channels\FacebookStream;
+
 /**
  * Class ManageStreamCart
  *
@@ -20,6 +22,7 @@ class ManageStreamCart {
 	public function __construct() {
 		add_action( 'admin_head', [ $this, 'render_premium_feature_modal' ] );
 		add_action( 'wp_ajax_alpha_sc_save_channels_credentials', [ $this, 'save_channels_credentials' ] );
+		add_action( 'wp_ajax_alpha_sc_initialize_stream', [ $this, 'initialize_stream' ] );
 	}
 
 	/**
@@ -79,4 +82,9 @@ class ManageStreamCart {
 		wp_send_json_success( [ 'message' => __( 'Credentials saved successfully.', 'alpha-stream-cart' ) ] );
 		wp_die();
 	}
+
+    public function initialize_stream() {
+        $stream = new FacebookStream();
+        $stream->start_stream();
+    }
 }

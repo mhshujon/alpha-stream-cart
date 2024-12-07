@@ -34,6 +34,6 @@ if ( !function_exists( 'alpha_sc_get_redirect_url' ) ) {
 	 * @since 1.0.0
 	 */
 	function alpha_sc_get_redirect_url(): string {
-		return esc_url( admin_url( 'admin.php?page=alpha-stream-cart&tab=stream-connect' ) );
+		return sanitize_url( admin_url( 'admin.php?page=alpha-stream-cart&tab=stream-connect' ) );
 	}
 }

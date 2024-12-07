@@ -63,6 +63,19 @@ class LoadAssets {
 				'deps'      => [ 'wp-i18n', 'jquery' ],
 				'in_footer' => true,
 			],
+			'alpha-stream-cart-rtmp-app' => [
+//				'src'       => ALPHA_STREAM_CART_ASSETS . '/js/lib/rtmp.js',
+				'src'       => 'https://cdn.jsdelivr.net/npm/rtmp-rtsp-stream-client-js@latest/dist/rtmp-rtsp-stream-client.min.js',
+				'version'   => ALPHA_STREAM_CART_VERSION,
+				'deps'      => [ 'wp-i18n', 'jquery' ],
+				'in_footer' => true,
+			],
+			'alpha-stream-cart-stream-app' => [
+				'src'       => ALPHA_STREAM_CART_ASSETS . '/js/stream.js',
+				'version'   => ALPHA_STREAM_CART_VERSION,
+				'deps'      => [ 'wp-i18n', 'jquery' ],
+				'in_footer' => true,
+			],
 		];
 	}
 
@@ -107,6 +120,8 @@ class LoadAssets {
 
 		wp_enqueue_style( 'alpha-stream-cart-css' );
 		wp_enqueue_script( 'alpha-stream-cart-app' );
+		wp_enqueue_script( 'alpha-stream-cart-stream-app' );
+		wp_enqueue_script( 'alpha-stream-cart-rtmp-app' );
 
 		$this->enqueue_localized_scripts();
 	}

@@ -1,6 +1,9 @@
 <?php
 $stream_channels = function_exists( 'alpha_sc_get_channels' ) ? alpha_sc_get_channels() : [];
-$redirect_url = function_exists( 'alpha_sc_get_redirect_url' ) ? alpha_sc_get_redirect_url() : '';
+$redirect_url    = function_exists( 'alpha_sc_get_redirect_url' ) ? alpha_sc_get_redirect_url() : '';
+
+$state = filter_input( INPUT_GET, 'state', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+$code  = filter_input( INPUT_GET, 'code', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 ?>
 
 <div id="alpha-stream-connect" class="tab-pane">

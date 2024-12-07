@@ -1,23 +1,4 @@
 jQuery(document).ready(function($) {
-    // Stream controls
-    $('#start-stream').on('click', function() {
-        $(this).prop('disabled', true);
-        $('#stop-stream').prop('disabled', false);
-        
-        $.post(ajaxurl, {
-            action: 'streamcart_create_stream'
-        }).done(function(response) {
-            if (response.success) {
-                initializeStream(response.data.stream_id);
-                showNotification('Stream started successfully');
-            } else {
-                showNotification(response.data, 'error');
-                $('#start-stream').prop('disabled', false);
-                $('#stop-stream').prop('disabled', true);
-            }
-        });
-    });
-
     $('#stop-stream').on('click', function() {
         if (!confirm('Are you sure you want to end the stream?')) {
             return;
@@ -146,11 +127,9 @@ jQuery(document).ready(function($) {
             _alpha_stream_cart_nonce: alphaStreamCartVars.ajaxNonce,
             form_data: $('form#alpha-stream-channel-settings').serialize()
         }).done(function(response) {
-            console.log(response);
             if (response.success) {
-                // showNotification('Channel credentials saved successfully');
+                // Display success message or update UI
             } else {
-                // showNotification(response.data, 'error');
             }
         });
     }
@@ -165,4 +144,24 @@ jQuery(document).ready(function($) {
         $('span#alpha-stream-copied-msg').show().delay(700).fadeOut(); // Fade in and out effect
     }
     $('#alpha-stream-redirect-url').on( 'click', copyRedirectUrl);
+
+    // Initialize the stream
+    const initializeStream = () => {
+        $('#start-stream').prop('disabled', true);
+        $('#stop-stream').prop('disabled', false);
+
+        $.post(ajaxurl, {
+            action: 'alpha_sc_initialize_stream'
+        }).done(function(response) {
+            if (response.success) {
+                // initializeStream(response.data.stream_id);
+                // showNotification('Stream started successfully');
+            } else {
+                // showNotification(response.data, 'error');
+                $('#start-stream').prop('disabled', false);
+                $('#stop-stream').prop('disabled', true);
+            }
+        });
+    }
+    $( '#start-stream' ).on( 'click', initializeStream );
 });
